@@ -2,9 +2,9 @@
 
 ### Requirements Status
 - [x] User registration and login
-- [x] Membership status (Member, Admin): `032a27b` - feat: implement join the club feature
-- [ ] Message creation (only for members)
-- [ ] Message viewing (anyone can see messages, but only members see author and date)
+- [x] Membership status (Member, Admin)
+- [x] Message creation (only for members)
+- [x] Message viewing (anyone can see messages, but only members see author and date)
 - [ ] Admin privileges (delete messages)
 - [x] Database Setup
     - [x] Local PostgreSQL connection
@@ -51,6 +51,12 @@ here we will keep track of our dev log
 - **Feature:** Implemented "Join the Club" page where users can enter a secret passcode to become members.
 - **Logic:** Added `updateMembershipStatus` to model and controller logic to verify passcode.
 - **Routes:** Added `/join-club` routes.
+
+#### 7: Message Creation & Display
+- **Feature:** Implemented message creation for logged-in users and message display on the home page.
+- **Logic:** Created `messages.controller.js` and `messages.model.js` to handle message data.
+- **Views:** Added `create-message.ejs` and updated `index.ejs` to show messages with conditional author details.
+- **Routes:** Added `messages.router.js` and mounted it in `app.js`.
 
 ### technology
 - dotenv, git, javascript, ejs, express, MVC pattern, postgresql, express-validator, passport.js, passport-local, bcryptjs

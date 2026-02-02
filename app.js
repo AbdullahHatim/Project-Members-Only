@@ -9,6 +9,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
 const usersModel = require("./models/users.model");
 const usersRouter = require('./routers/users.router');
+const messagesRouter = require('./routers/messages.router');
 const indexRouter = require('./routers/index.router');
 
 const app = express();
@@ -74,6 +75,7 @@ app.use((req, res, next) => {
 
 app.use('/', indexRouter);
 app.use('/', usersRouter);
+app.use('/', messagesRouter);
 
 
 // General Error Handler

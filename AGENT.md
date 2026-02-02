@@ -14,8 +14,8 @@
 
 here we will keep track of our dev log
 
-- [x] Initial commit: `---` - feat: initial project structure and express setup
-- [x] Database Setup: `---` - feat: add .env, db/pool.js, and db/seed.js for local PostgreSQL
+- [x] Initial commit: `a97ad31` - feat: initial project structure and express setup
+- [x] Database Setup: `ac4e7ef` - feat: add .env, db/pool.js, and db/seed.js for local PostgreSQL
 
 ### condenced chat history
 

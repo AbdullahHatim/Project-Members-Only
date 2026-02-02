@@ -19,6 +19,7 @@ here we will keep track of our dev log
 - [x] App Setup & Theme: `16c9afc` - feat: implement night club theme, basic app setup, and views
 - [x] User Creation: `9b688a7` - feat: implement user sign-up, authentication, and sessions
 - [x] Admin Privileges: `6b5be99` - feat: implement admin privileges and message deletion
+- [x] Database Restructuring: `db/schema.js`, `db/upgrade.js`, `db/seed.js` updated
 
 ### condenced chat history
 
@@ -29,6 +30,7 @@ here we will keep track of our dev log
 - **Local Setup:** Configured local PostgreSQL connection in `.env`.
 - **Pool & Seed:** Created `db/pool.js` for connection pooling and `db/seed.js` for schema initialization.
 - **Schema Design:** Defined `users` (id, first_name, last_name, password, membership_status) and `messages` (id, title, content, timestamp, user_id) tables.
+- **Restructuring:** Extracted schema to `db/schema.js`. Created `db/upgrade.js` for destructive updates and updated `db/seed.js` for non-destructive seeding with initial data.
 
 #### 3: App Setup & Night Club Theme
 - **App Configuration:** Created `app.js` with Express, EJS, session, and error handling middleware.

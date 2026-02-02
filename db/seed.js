@@ -1,51 +1,66 @@
 const { Client } = require("pg");
+const schema = require("./schema");
+const bcrypt = require("bcryptjs");
 require("dotenv").config();
-
-const SQL = `
-DROP TABLE IF EXISTS messages;
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS session;
-
-CREATE TABLE users (
-  id SERIAL PRIMARY KEY,
-  first_name VARCHAR(255),
-  last_name VARCHAR(255),
-  username VARCHAR(255) UNIQUE,
-  password VARCHAR(255),
-  membership_status VARCHAR(50) DEFAULT 'non-member'
-);
-
-CREATE TABLE messages (
-  id SERIAL PRIMARY KEY,
-  title VARCHAR(255),
-  content TEXT,
-  timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  user_id INTEGER REFERENCES users(id)
-);
-
-CREATE TABLE session (
-  sid VARCHAR NOT NULL COLLATE "default",
-  sess JSON NOT NULL,
-  expire TIMESTAMP(6) NOT NULL
-)
-WITH (OIDS=FALSE);
-
-ALTER TABLE session ADD CONSTRAINT session_pkey PRIMARY KEY (sid) NOT DEFERRABLE INITIALLY IMMEDIATE;
-
-CREATE INDEX IDX_session_expire ON session (expire);
-`;
 
 async function main() {
   console.log("seeding...");
-  console.log("Connecting to:", process.env.DATABASE_URL);
   const client = new Client({
     connectionString: process.env.DATABASE_URL,
   });
+
   try {
     await client.connect();
     console.log("Connected successfully");
-    await client.query(SQL);
-    console.log("Tables created");
+
+    // Ensure schema exists
+    await client.query(schema);
+    console.log("Schema ensured");
+
+    // Hash passwords
+    const hashedPassword = await bcrypt.hash("password123", 10);
+
+    // Insert Users
+    const userInsertQuery = `
+      INSERT INTO users (first_name, last_name, username, password, membership_status)
+      VALUES 
+        ($1, $2, $3, $4, $5),
+        ($6, $7, $8, $9, $10),
+        ($11, $12, $13, $14, $15)
+      ON CONFLICT (username) DO NOTHING
+      RETURNING id, username;
+    `;
+
+    const userValues = [
+      "John", "Doe", "johndoe", hashedPassword, "non-member",
+      "Jane", "Smith", "janesmith", hashedPassword, "member",
+      "Admin", "User", "admin", hashedPassword, "admin"
+    ];
+
+    const { rows: users } = await client.query(userInsertQuery, userValues);
+    console.log("Users seeded (or already existed)");
+
+    // Get user IDs (in case they already existed and RETURNING didn't return them)
+    const allUsers = await client.query("SELECT id, username FROM users WHERE username IN ('johndoe', 'janesmith', 'admin')");
+    const userMap = {};
+    allUsers.rows.forEach(u => userMap[u.username] = u.id);
+
+    // Insert Messages
+    const messageInsertQuery = `
+      INSERT INTO messages (title, content, user_id)
+      VALUES 
+        ($1, $2, $3),
+        ($4, $5, $6);
+    `;
+
+    const messageValues = [
+      "Hello World", "This is my first message!", userMap['johndoe'],
+      "Club Secret", "The secret code is 'neon-lights'.", userMap['janesmith']
+    ];
+
+    await client.query(messageInsertQuery, messageValues);
+    console.log("Messages seeded");
+
   } catch (err) {
     console.error("Error during seeding:", err);
   } finally {

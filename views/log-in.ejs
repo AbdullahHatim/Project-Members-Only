@@ -1,0 +1,36 @@
+<%- include('partials/header') %>
+
+<h2>Log In</h2>
+
+<% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+  <div class="neon-box" style="border-color: var(--neon-pink); box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);">
+    <h3 style="color: var(--neon-pink); margin-top: 0; text-shadow: 0 0 5px var(--neon-pink);">Errors</h3>
+    <ul style="color: var(--neon-pink);">
+      <% errors.forEach(function(error) { %>
+        <li><%= error.msg %></li>
+      <% }); %>
+    </ul>
+  </div>
+<% } %>
+
+<% if (typeof message !== 'undefined' && message) { %>
+    <div class="neon-box" style="border-color: var(--neon-pink); box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);">
+        <p style="color: var(--neon-pink);"><%= message %></p>
+    </div>
+<% } %>
+
+<div class="neon-box">
+  <form action="/log-in" method="POST">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" required value="<%= locals.username || '' %>">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" required>
+    </div>
+    <button type="submit">Log In</button>
+  </form>
+</div>
+
+<%- include('partials/footer') %>

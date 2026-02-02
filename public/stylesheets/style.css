@@ -156,7 +156,8 @@ select:focus {
 /* Buttons */
 button,
 input[type="submit"],
-.btn {
+.btn,
+.button {
     --btn-color: var(--neon-lime);
     background: rgba(255, 255, 255, 0.05);
     border: 2px solid var(--btn-color);
@@ -203,6 +204,22 @@ button:active,
     margin-bottom: 2.5rem;
     background: rgba(0, 255, 255, 0.05);
     position: relative;
+}
+
+.message-card {
+    border: 1px solid var(--neon-cyan);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-top: 2rem;
+    background: rgba(0, 255, 255, 0.02);
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+.message-card:hover {
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
 }
 
 /* Footer */

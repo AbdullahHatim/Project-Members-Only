@@ -57,6 +57,7 @@ here we will keep track of our dev log
 - **Logic:** Created `messages.controller.js` and `messages.model.js` to handle message data.
 - **Views:** Added `create-message.ejs` and updated `index.ejs` to show messages with conditional author details.
 - **Routes:** Added `messages.router.js` and mounted it in `app.js`.
+- **Styling:** Added borders to message cards and styled the "Create Message" link as a button.
 
 ### technology
 - dotenv, git, javascript, ejs, express, MVC pattern, postgresql, express-validator, passport.js, passport-local, bcryptjs

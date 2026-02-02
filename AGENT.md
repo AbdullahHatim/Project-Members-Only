@@ -16,6 +16,7 @@ here we will keep track of our dev log
 
 - [x] Initial commit: `a97ad31` - feat: initial project structure and express setup
 - [x] Database Setup: `ac4e7ef` - feat: add .env, db/pool.js, and db/seed.js for local PostgreSQL
+- [x] App Setup & Theme: `16c9afc` - feat: implement night club theme, basic app setup, and views
 
 ### condenced chat history
 
@@ -26,6 +27,13 @@ here we will keep track of our dev log
 - **Local Setup:** Configured local PostgreSQL connection in `.env`.
 - **Pool & Seed:** Created `db/pool.js` for connection pooling and `db/seed.js` for schema initialization.
 - **Schema Design:** Defined `users` (id, first_name, last_name, password, membership_status) and `messages` (id, title, content, timestamp, user_id) tables.
+
+#### 3: App Setup & Night Club Theme
+- **App Configuration:** Created `app.js` with Express, EJS, session, and error handling middleware.
+- **Models:** Created `models/users.model.js` and `models/messages.model.js`.
+- **Views & Partials:** Created `views/index.ejs`, `views/error.ejs`, and partials (`header.ejs`, `footer.ejs`) for consistent layout.
+- **Styling:** Implemented a "Night Club" theme in `public/stylesheets/style.css` using neon colors, dark backgrounds, and dynamic `color-mix` for button glows.
+- **Testing:** Created `test.html` to showcase the new components and styles.
 
 ### technology
 - dotenv, git, javascript, ejs, express, MVC pattern, postgresql, express-validator, passport.js, passport-local, bcryptjs

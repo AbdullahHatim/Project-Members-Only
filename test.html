@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Test - Members Only</title>
+    <link rel="stylesheet" href="public/stylesheets/style.css">
+</head>
+<body>
+    <header>
+        <h1>Members Only</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Messages</a></li>
+                <li><a href="#">Join Club</a></li>
+                <li><a href="#">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Typography & Headings</h2>
+            <p>This is a standard paragraph showing the <span style="color: var(--neon-pink)">neon pink</span> accent color within text. The background is deep dark to make the neon pop. All common elements are now styled globally.</p>
+            <h3 style="color: var(--neon-yellow); text-shadow: 0 0 5px var(--neon-yellow);">Sub-heading (Yellow)</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neon styles are perfect for exclusive communities. <a href="#">This is a link</a> within a paragraph.</p>
+        </section>
+
+        <section>
+            <h2>Neon Box Component</h2>
+            <div class="neon-box">
+                <h3>Exclusive Content</h3>
+                <p>This box uses a subtle cyan glow and transparent background to highlight important sections. It's a reusable container for messages or profile info.</p>
+                <button>Action Button</button>
+                <a href="#" class="btn" style="--btn-color: #ff00ff;">Pink Button</a>
+            </div>
+        </section>
+
+        <section>
+            <h2>Form Elements</h2>
+            <form>
+                <div class="neon-box" style="border-color: var(--neon-purple); box-shadow: 0 0 10px var(--neon-purple);">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Enter your alias...">
+                    
+                    <label for="role">Membership Level</label>
+                    <select id="role">
+                        <option>Guest</option>
+                        <option>Member</option>
+                        <option>Admin</option>
+                    </select>
+
+                    <label for="msg">Secret Message</label>
+                    <textarea id="msg" rows="4" placeholder="Whisper something..."></textarea>
+                    
+                    <input type="submit" value="Submit to Vault" style="--btn-color: #00ffff;">
+                </div>
+            </form>
+        </section>
+
+        <section>
+            <h2>Data Tables</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Status</th>
+                        <th>Joined</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>NeonKnight</td>
+                        <td style="color: var(--neon-lime)">Member</td>
+                        <td>2026-01-01</td>
+                    </tr>
+                    <tr>
+                        <td>CyberPunk</td>
+                        <td style="color: var(--neon-cyan)">Admin</td>
+                        <td>2025-12-15</td>
+                    </tr>
+                    <tr>
+                        <td>ShadowWalker</td>
+                        <td style="color: #888">Guest</td>
+                        <td>2026-02-01</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2 class="error-title">Error State Example</h2>
+            <div class="neon-box" style="border-color: var(--neon-pink); box-shadow: 0 0 10px var(--neon-pink);">
+                <p style="color: var(--neon-pink)">Access Denied: You must be a member to view this message.</p>
+                <pre>Error: Unauthorized
+    at checkMembership (auth.js:42)
+    at router.get (/messages:12)
+    at Layer.handle [as handle_request] (express/lib/router/layer.js:95)</pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>Lists</h2>
+            <ul>
+                <li>First requirement: Be cool.</li>
+                <li>Second requirement: Keep secrets.</li>
+                <li>Third requirement: Enjoy the neon.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Members Only - The Underground Community</p>
+    </footer>
+</body>
+</html>

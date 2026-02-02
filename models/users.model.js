@@ -23,8 +23,14 @@ async function getUserById(id) {
   return rows[0];
 }
 
+async function updateMembershipStatus(id, status) {
+  const query = "UPDATE users SET membership_status = $1 WHERE id = $2";
+  await pool.query(query, [status, id]);
+}
+
 module.exports = {
   createUser,
   getUserByUsername,
   getUserById,
+  updateMembershipStatus,
 };

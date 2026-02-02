@@ -2,7 +2,7 @@
 
 ### Requirements Status
 - [x] User registration and login
-- [ ] Membership status (Member, Admin)
+- [x] Membership status (Member, Admin): `032a27b` - feat: implement join the club feature
 - [ ] Message creation (only for members)
 - [ ] Message viewing (anyone can see messages, but only members see author and date)
 - [ ] Admin privileges (delete messages)
@@ -46,6 +46,11 @@ here we will keep track of our dev log
 - **Authentication:** Implemented Passport.js with Local Strategy for user login.
 - **Sessions:** Configured `express-session` with `connect-pg-simple` for PostgreSQL-backed session storage.
 - **Routing:** Restored default router for home page and added auth routes.
+
+#### 6: Join the Club
+- **Feature:** Implemented "Join the Club" page where users can enter a secret passcode to become members.
+- **Logic:** Added `updateMembershipStatus` to model and controller logic to verify passcode.
+- **Routes:** Added `/join-club` routes.
 
 ### technology
 - dotenv, git, javascript, ejs, express, MVC pattern, postgresql, express-validator, passport.js, passport-local, bcryptjs

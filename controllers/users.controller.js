@@ -62,10 +62,33 @@ function logOut(req, res, next) {
   });
 }
 
+async function getJoinClubForm(req, res) {
+  res.render("join-club", { title: "Join the Club", errors: [] });
+}
+
+async function joinClub(req, res, next) {
+  const { passcode } = req.body;
+  if (passcode === process.env.CLUB_SECRET) {
+    try {
+      await usersModel.updateMembershipStatus(req.user.id, "member");
+      res.redirect("/");
+    } catch (err) {
+      return next(err);
+    }
+  } else {
+    res.render("join-club", {
+      title: "Join the Club",
+      errors: [{ msg: "Incorrect passcode" }],
+    });
+  }
+}
+
 module.exports = {
   getSignUpForm,
   getLogInForm,
   createUser,
   logIn,
   logOut,
+  getJoinClubForm,
+  joinClub,
 };

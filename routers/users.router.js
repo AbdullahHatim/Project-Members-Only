@@ -49,4 +49,14 @@ router.post("/log-in", usersController.logIn);
 
 router.get("/log-out", usersController.logOut);
 
+router.get("/join-club", (req, res, next) => {
+  if (!req.user) return res.redirect("/log-in");
+  next();
+}, usersController.getJoinClubForm);
+
+router.post("/join-club", (req, res, next) => {
+  if (!req.user) return res.redirect("/log-in");
+  next();
+}, usersController.joinClub);
+
 module.exports = router;

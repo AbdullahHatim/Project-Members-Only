@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+
+<h2>Join the Club</h2>
+
+<% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+  <div class="neon-box" style="border-color: var(--neon-pink); box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);">
+    <h3 style="color: var(--neon-pink); margin-top: 0; text-shadow: 0 0 5px var(--neon-pink);">Errors</h3>
+    <ul style="color: var(--neon-pink);">
+      <% errors.forEach(function(error) { %>
+        <li><%= error.msg %></li>
+      <% }); %>
+    </ul>
+  </div>
+<% } %>
+
+<div class="neon-box">
+  <p>Enter the secret passcode to become a member.</p>
+  <form action="/join-club" method="POST">
+    <div class="form-group">
+      <label for="passcode">Passcode</label>
+      <input type="text" name="passcode" id="passcode" required>
+    </div>
+    <button type="submit">Join</button>
+  </form>
+</div>
+
+<%- include('partials/footer') %>

@@ -5,7 +5,7 @@
 - [x] Membership status (Member, Admin)
 - [x] Message creation (only for members)
 - [x] Message viewing (anyone can see messages, but only members see author and date)
-- [ ] Admin privileges (delete messages)
+- [x] Admin privileges (delete messages)
 - [x] Database Setup
     - [x] Local PostgreSQL connection
     - [x] Tables creation (users, messages)
@@ -18,6 +18,7 @@ here we will keep track of our dev log
 - [x] Database Setup: `ac4e7ef` - feat: add .env, db/pool.js, and db/seed.js for local PostgreSQL
 - [x] App Setup & Theme: `16c9afc` - feat: implement night club theme, basic app setup, and views
 - [x] User Creation: `9b688a7` - feat: implement user sign-up, authentication, and sessions
+- [x] Admin Privileges: `6b5be99` - feat: implement admin privileges and message deletion
 
 ### condenced chat history
 
@@ -58,6 +59,13 @@ here we will keep track of our dev log
 - **Views:** Added `create-message.ejs` and updated `index.ejs` to show messages with conditional author details.
 - **Routes:** Added `messages.router.js` and mounted it in `app.js`.
 - **Styling:** Added borders to message cards and styled the "Create Message" link as a button.
+
+#### 8: Admin Privileges
+- **Feature:** Implemented message deletion for admins.
+- **Logic:** Added `deleteMessage` to model and controller.
+- **Routes:** Added `POST /delete` route with `isAdmin` middleware.
+- **Views:** Added delete button to `index.ejs` for admin users.
+- **Styling:** Added neon pink styling for the delete button.
 
 ### technology
 - dotenv, git, javascript, ejs, express, MVC pattern, postgresql, express-validator, passport.js, passport-local, bcryptjs

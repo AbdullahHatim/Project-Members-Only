@@ -222,6 +222,18 @@ button:active,
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
 }
 
+.delete-form {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.delete-button {
+    --btn-color: var(--neon-pink);
+    padding: 0.4rem 1rem;
+    min-height: 2rem;
+    font-size: 0.8rem;
+}
+
 /* Footer */
 footer {
     border-top: 2px solid var(--neon-purple);

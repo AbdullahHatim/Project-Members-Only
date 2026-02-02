@@ -41,8 +41,24 @@ async function getAllMessages(req, res, next) {
   }
 }
 
+async function deleteMessage(req, res, next) {
+  if (!req.user || req.user.membership_status !== "admin") {
+    const err = new Error("Unauthorized");
+    err.status = 403;
+    return next(err);
+  }
+
+  try {
+    await messagesModel.deleteMessage(req.body.messageId);
+    res.redirect("/");
+  } catch (err) {
+    return next(err);
+  }
+}
+
 module.exports = {
   getCreateMessageForm,
   createMessage,
   getAllMessages,
+  deleteMessage,
 };
